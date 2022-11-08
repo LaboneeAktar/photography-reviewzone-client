@@ -44,7 +44,7 @@ const Header = () => {
         <Link>
           <button
             type="button"
-            className="px-8 py-3 font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100"
+            className="px-6 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100"
           >
             Login
           </button>
