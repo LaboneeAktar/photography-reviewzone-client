@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import bannerImg from "../../assets/images/banner.gif";
 import { FaArrowRight } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Service from "../Service/Service";
+import PhotoGallery from "./PhotoGallery";
+import BasicElement from "./BasicElement";
 
 const Home = () => {
-  const loderData = useLoaderData();
-  const services = loderData.data;
+  // const services = useLoaderData();
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch("https://photography-reviewzone-server.vercel.app/services")
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   console.log(services);
   return (
     <div>
@@ -60,6 +73,21 @@ const Home = () => {
             </button>
           </Link>
         </div>
+        <section>
+          <h1 className="text-center text-3xl pt-16 pb-1 font-semibold text-black">
+            Basic Elements of Photography
+          </h1>
+          <p className="text-lg text-center pb-5">
+            Here are 5 Fundamental Elements of Photography.
+          </p>
+          <BasicElement></BasicElement>
+        </section>
+      </section>
+      <section>
+        <h1 className="text-center text-3xl pt-14 pb-1 font-semibold text-black">
+          Photo Gallery
+        </h1>
+        <PhotoGallery></PhotoGallery>
       </section>
     </div>
   );

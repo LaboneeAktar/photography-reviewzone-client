@@ -9,7 +9,7 @@ const Header = () => {
     <>
       <li>
         <Link
-          to="/"
+          to="/home"
           title="Home"
           className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
         >
