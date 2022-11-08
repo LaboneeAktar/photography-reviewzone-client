@@ -1,8 +1,8 @@
 import React from "react";
 import bannerImg from "../../assets/images/banner.gif";
 import { FaArrowRight } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
-import ServiceForHome from "./ServiceForHome";
+import { Link, useLoaderData } from "react-router-dom";
+import Service from "../Service/Service";
 
 const Home = () => {
   const loderData = useLoaderData();
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <section>
-        <div className="dark:bg-violet-400 bg-teal-400">
+        <div className="dark:bg-violet-400 bg-emerald-300">
           <div className="container flex flex-col items-center px-4 py-10 pb-24 mx-auto text-center lg:pb-56 md:py-16 md:px-10 lg:px-32 dark:text-gray-900">
             <h1 className="text-xl font-bold leading-none lg:text-3xl dark:text-gray-900">
               Get All Services & Give Your Review Here!!
@@ -42,24 +42,23 @@ const Home = () => {
         />
       </section>
       <section>
-        <h1 className="text-center text-3xl pt-4 pb-6 font-semibold text-teal-500">
+        <h1 className="text-center text-3xl pt-4 pb-6 font-semibold text-black">
           Services
         </h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-16 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-5 lg:mx-16 mb-8">
           {services.map((service) => (
-            <ServiceForHome
-              key={service._id}
-              service={service}
-            ></ServiceForHome>
+            <Service key={service._id} service={service}></Service>
           ))}
         </div>
         <div className="text-center">
-          <button
-            type="button"
-            className="px-5 py-2 m-2 text-lg border border-gray-800 rounded bg-gray-800 text-white dark:border-gray-700 dark:text-gray-900 hover:bg-teal-500 hover:text-black hover:border-teal-500"
-          >
-            Show All
-          </button>
+          <Link to="/services">
+            <button
+              type="button"
+              className="px-5 py-2 m-2 text-lg border border-gray-800 rounded bg-gray-800 text-white dark:border-gray-700 dark:text-gray-900 hover:bg-teal-500 hover:text-black hover:border-teal-500"
+            >
+              Show All
+            </button>
+          </Link>
         </div>
       </section>
     </div>
