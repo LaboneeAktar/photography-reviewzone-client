@@ -7,7 +7,7 @@ const Services = () => {
   const services = loaderData.data;
   return (
     <div>
-      <h1 className="text-center text-3xl p-10 font-semibold text-black">
+      <h1 className="text-center text-2xl p-10 font-semibold text-black">
         All Photography Services
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-5 lg:mx-16 mb-8">
