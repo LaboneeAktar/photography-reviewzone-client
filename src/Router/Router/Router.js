@@ -12,14 +12,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        // loader: () =>
-        //   fetch("https://photography-reviewzone-server.vercel.app/services"),
       },
       {
         path: "/home",
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://photography-reviewzone-server.vercel.app/services"),
       },
       {
         path: "/services",

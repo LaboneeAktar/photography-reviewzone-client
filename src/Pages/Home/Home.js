@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import Service from "../Service/Service";
 import PhotoGallery from "./PhotoGallery";
 import BasicElement from "./BasicElement";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Home = () => {
-  // const services = useLoaderData();
-
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -46,11 +46,15 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <img
-          src={bannerImg}
-          alt=""
-          className="w-4/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 dark:bg-gray-500"
-        />
+        <PhotoProvider>
+          <PhotoView src={bannerImg}>
+            <img
+              src={bannerImg}
+              alt=""
+              className="w-4/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 dark:bg-gray-500"
+            />
+          </PhotoView>
+        </PhotoProvider>
       </section>
       <section>
         <h1 className="text-center text-3xl pt-4 pb-6 font-semibold text-black">
