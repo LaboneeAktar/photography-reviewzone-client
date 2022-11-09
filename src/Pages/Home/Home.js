@@ -7,8 +7,10 @@ import PhotoGallery from "./PhotoGallery";
 import BasicElement from "./BasicElement";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   const [services, setServices] = useState([]);
 
   useEffect(() => {

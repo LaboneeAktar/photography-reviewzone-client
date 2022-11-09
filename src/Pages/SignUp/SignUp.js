@@ -5,8 +5,10 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginBgImage from "../../assets/images/loginbg.jpg";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
+  useTitle("SignUp");
   const [error, setError] = useState("");
   const { createUser, updateUserProfile, providerLogin } =
     useContext(AuthContext);
