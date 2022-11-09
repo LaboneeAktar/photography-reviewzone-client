@@ -7,7 +7,7 @@ const Services = () => {
   const services = loaderData.data;
   return (
     <div>
-      <div className="relative mb-16">
+      <div className="lg:relative mb-16 lg:block hidden">
         <img
           src="https://i.ibb.co/zNG50MC/red-forest-trees-path-2560x1080.jpg"
           className="absolute inset-0 object-cover w-full h-full"
@@ -22,7 +22,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-5 lg:mx-16 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mx-5 lg:mx-16 mb-16 pt-6 lg:pt-0">
         {services.map((service) => (
           <Service key={service._id} service={service}></Service>
         ))}
