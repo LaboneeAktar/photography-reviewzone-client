@@ -2,9 +2,10 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { title, img, description, price, ratings } = service;
+  const { _id, title, img, description, price, ratings } = service;
   return (
     <div>
       <PhotoProvider>
@@ -37,12 +38,14 @@ const Service = ({ service }) => {
               </p>
             </div>
             <div className="flex space-x-2 text-sm dark:text-gray-400">
-              <button
-                type="button"
-                className="px-2 py-2 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-green-200 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
-              >
-                View Details
-              </button>
+              <Link to={`/services/${_id}`}>
+                <button
+                  type="button"
+                  className="px-2 py-2 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-green-200 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
+                >
+                  View Details
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -195,7 +195,7 @@ const SignUp = () => {
 
           <button
             onClick={handleGoogleLogIn}
-            className="flex items-center justify-center w-full px-6 py-2 text-[16px] font-normal border  border-black rounded text-black hover:bg-teal-500 hover:border-teal-500 hover:text-black mb-5"
+            className="flex items-center justify-center w-full px-6 py-2 text-[16px] font-normal border  border-black rounded text-black hover:bg-blue-800 hover:border-teal-500 hover:text-white mb-5"
           >
             <FaGoogle className="mr-3" /> SignUp with Google
           </button>
