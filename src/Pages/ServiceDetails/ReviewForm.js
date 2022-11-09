@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const ReviewForm = ({ service }) => {
@@ -25,7 +26,7 @@ const ReviewForm = ({ service }) => {
       message,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://photography-reviewzone-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,6 +36,10 @@ const ReviewForm = ({ service }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.acknowledged) {
+          toast.success("Send Your Review Successfully");
+          form.reset();
+        }
       })
       .catch((error) => console.error(error));
   };

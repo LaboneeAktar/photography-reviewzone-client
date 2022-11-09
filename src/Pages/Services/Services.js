@@ -5,8 +5,8 @@ import Service from "../Service/Service";
 
 const Services = () => {
   useTitle("Services");
-  const loaderData = useLoaderData();
-  const services = loaderData.data;
+  const services = useLoaderData();
+
   return (
     <div>
       <div className="lg:relative mb-16 lg:block hidden">
