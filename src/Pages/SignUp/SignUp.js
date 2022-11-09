@@ -1,9 +1,23 @@
-import React from "react";
-import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginBgImage from "../../assets/images/loginbg.jpg";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
+  const [error, setError] = useState("");
+  const { createUser, updateUserProfile, providerLogin } =
+    useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,11 +27,76 @@ const SignUp = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
 
-    console.log(name, email, password, confirm, photoURL);
+    // console.log(name, email, password, confirm, photoURL);
+
+    //Password Validation for uppercase
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Passowrd should be at least one uppercase letter.");
+      return;
+    }
+
+    //Password Validation for special character
+    if (!/(?=.*[!@#$%^&*])/.test(password)) {
+      setError("Passowrd should have one special character.");
+      return;
+    }
+
+    //Password Validation for length
+    if (password < 6) {
+      setError("Passowrd must be 6 character or more.");
+      return;
+    }
+
+    //check confirm password
+    if (password !== confirm) {
+      setError("Don't matched your passoword. Please try again.");
+      return;
+    }
+    setError("");
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        updateUserProfile(name, photoURL)
+          .then(() => {})
+          .catch((error) => console.error(error));
+        form.reset();
+        toast.success("Successfully Created Account");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
+
+  //login with google
+  const handleGoogleLogIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+
+  //login with github
+  const handleGithubLogin = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Welcome!! Login Successfull.");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
-    <div className="bg-emerald-200">
+    <div className="bg-emerald-100">
       <div className="lg:relative mb-16 hidden lg:block">
         <img
           src={loginBgImage}
@@ -32,15 +111,15 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="py-10 px-5 lg:pb-16 bg-emerald-200">
-        <div className="w-full max-w-xl p-8 rounded-xl bg-gray-700 text-gray-100 mx-auto">
+      <div className="py-10 px-5 lg:pb-16 bg-emerald-100">
+        <div className="w-full max-w-2xl p-8 rounded-xl bg-teal-300 text-black mx-auto">
           <h1 className="text-2xl text-center">Sign Up</h1>
           <form
             onSubmit={handleSubmit}
             className="space-y-6 ng-untouched ng-pristine ng-valid"
           >
             <div className="space-y-1 text-sm">
-              <label htmlFor="name" className="block text-gray-200 text-lg">
+              <label htmlFor="name" className="block text-black text-lg">
                 User Name
               </label>
               <input
@@ -48,12 +127,12 @@ const SignUp = () => {
                 name="name"
                 id="name"
                 placeholder="Enter Your Name"
-                className="w-full px-4 py-4 rounded-md border-gray-700 bg-gray-900 text-gray-100 font-normal text-[16px] focus:border-violet-400"
+                className="w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black font-normal text-[16px] focus:border-violet-400"
                 required
               />
             </div>
             <div className="space-y-1 text-sm">
-              <label htmlFor="photURL" className="block text-gray-200 text-lg">
+              <label htmlFor="photURL" className="block text-black text-lg">
                 Photo URL
               </label>
               <input
@@ -61,12 +140,12 @@ const SignUp = () => {
                 name="photoURL"
                 id="photURL"
                 placeholder="Enter PhotoURL"
-                className="w-full px-4 py-4 rounded-md border-gray-700 bg-gray-900 text-gray-100 font-normal text-[16px] focus:border-violet-400"
+                className="w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black font-normal text-[16px] focus:border-violet-400"
                 required
               />
             </div>
             <div className="space-y-1 text-sm">
-              <label htmlFor="email" className="block text-gray-200 text-lg">
+              <label htmlFor="email" className="block text-black text-lg">
                 Email
               </label>
               <input
@@ -74,12 +153,12 @@ const SignUp = () => {
                 name="email"
                 id="email"
                 placeholder="Enter Your Email"
-                className="w-full px-4 py-4 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400 font-normal text-[16px]"
+                className="w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
                 required
               />
             </div>
             <div className="space-y-1 text-sm">
-              <label htmlFor="password" className="block text-gray-200 text-lg">
+              <label htmlFor="password" className="block text-black text-lg">
                 Password
               </label>
               <input
@@ -87,12 +166,12 @@ const SignUp = () => {
                 name="password"
                 id="password"
                 placeholder="Enter Your Password"
-                className="w-full px-4 py-4 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400 font-normal text-[16px]"
+                className="w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black focus:border-violet-400 font-normal text-[16px]"
                 required
               />
             </div>
             <div className="space-y-1 text-sm">
-              <label htmlFor="confirm" className="block text-gray-200 text-lg">
+              <label htmlFor="confirm" className="block text-black text-lg">
                 Confirm Password
               </label>
               <input
@@ -100,20 +179,36 @@ const SignUp = () => {
                 name="confirm"
                 id="confirm"
                 placeholder="Confirm Your Password"
-                className="w-full px-4 py-4 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400 font-normal text-[16px]"
+                className="w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black focus:border-violet-400 font-normal text-[16px]"
                 required
               />
             </div>
-            <button className="block w-full px-6 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100">
+            <p className="text-red-700">{error}</p>
+            <button className="block w-full px-6 py-2 text-lg font-normal border border-black rounded text-black hover:bg-teal-500 hover:border-teal-500 dark:border-gray-100  dark:text-gray-100">
               SignUp
             </button>
-            <button className="flex items-center justify-center w-full px-6 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black">
-              <FaGoogle className="mr-3 text-blue-500" /> SignUp With Google
-            </button>
           </form>
-          <p className="text-sm text-center sm:px-6 pt-5 text-slate-400">
+
+          <p className="px-3 pt-10 pb-5 text-center font-normal text-lg dark:text-gray-400">
+            Login with Social Accounts
+          </p>
+
+          <button
+            onClick={handleGoogleLogIn}
+            className="flex items-center justify-center w-full px-6 py-2 text-[16px] font-normal border  border-black rounded text-black hover:bg-teal-500 hover:border-teal-500 hover:text-black mb-5"
+          >
+            <FaGoogle className="mr-3" /> SignUp with Google
+          </button>
+          <button
+            onClick={handleGithubLogin}
+            className="flex items-center justify-center text-[16px] w-full px-6 py-2 text-lg font-normal border border-black rounded text-black hover:bg-black hover:border-black hover:text-white"
+          >
+            <FaGithub className="mr-3" /> SignUp with GitHub
+          </button>
+
+          <p className="text-sm text-center sm:px-6 pt-5 text-gray-800">
             Already have an account?
-            <span className="ml-2 text-teal-500 hover:underline">
+            <span className="ml-2 text-teal-900 hover:underline">
               <Link to="/login">Login</Link>
             </span>
           </p>
