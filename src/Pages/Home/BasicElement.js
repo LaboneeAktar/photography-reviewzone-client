@@ -7,7 +7,7 @@ const BasicElement = () => {
         <div className="container mx-auto space-y-12">
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
             <img
-              src="https://i0.wp.com/www.lightstalking.com/wp-content/uploads/2013/02/Sinulog2013_6902_0179-copy.jpg?w=580&ssl=1"
+              src="https://i.ibb.co/VtCDGHN/Sinulog2013-6902-0179-copy.jpg"
               alt=""
               className="h-80 dark:bg-gray-500 aspect-video"
             />
@@ -23,7 +23,7 @@ const BasicElement = () => {
           </div>
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
             <img
-              src="https://i0.wp.com/www.lightstalking.com/wp-content/uploads/mi-pham-ftzl-r-dzyk-unsplash-scaled.jpg?resize=768%2C512&ssl=1"
+              src="https://i.ibb.co/VtWs0mW/mi-pham-ftzl-r-dzyk-unsplash-scaled.jpg"
               alt=""
               className="h-80 dark:bg-gray-500 aspect-video"
             />
@@ -42,7 +42,7 @@ const BasicElement = () => {
           </div>
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
             <img
-              src="https://i0.wp.com/www.lightstalking.com/wp-content/uploads/2013/02/Vietnam_4797_0775-copy.jpg?w=580&ssl=1"
+              src="https://i.ibb.co/kQKdHcV/Vietnam-4797-0775-copy.jpg"
               alt=""
               className="h-80 dark:bg-gray-500 aspect-video"
             />
@@ -61,7 +61,7 @@ const BasicElement = () => {
           </div>
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
             <img
-              src="https://i0.wp.com/www.lightstalking.com/wp-content/uploads/2013/02/Mindanao_0989_4223-copy.jpg?w=580&ssl=1"
+              src="https://i.ibb.co/ncRphjR/Mindanao-0989-4223-copy.jpg"
               alt=""
               className="h-80 dark:bg-gray-500 aspect-video"
             />
@@ -78,7 +78,7 @@ const BasicElement = () => {
           </div>
           <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
             <img
-              src="https://i0.wp.com/www.lightstalking.com/wp-content/uploads/2013/02/Palawan_7700_5741-copy.jpg?w=580&ssl=1"
+              src="https://i.ibb.co/NKBT3J2/Palawan-7700-5741-copy.jpg"
               alt=""
               className="h-80 dark:bg-gray-500 aspect-video"
             />

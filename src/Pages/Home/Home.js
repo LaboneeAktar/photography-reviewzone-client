@@ -14,9 +14,7 @@ const Home = () => {
   useEffect(() => {
     fetch("https://photography-reviewzone-server.vercel.app/services")
       .then((res) => res.json())
-      .then((data) => {
-        setServices(data);
-      })
+      .then((data) => setServices(data))
       .catch((error) => console.error(error));
   }, []);
 
