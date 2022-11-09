@@ -1,60 +1,112 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   // console.log(user.name);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const leftSideMenuItems = (
     <>
+      {user?.uid && (
+        <div className="w-10 rounded-full ml-3" title={user?.displayName}>
+          <img className="rounded-full h-10" alt="..." src={user?.photoURL} />
+        </div>
+      )}
       <li>
-        <Link
+        <NavLink
           to="/home"
           title="Home"
-          className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
+          className={({ isActive }) =>
+            isActive
+              ? "text-lg text-cyan-400"
+              : "text-lg tracking-wide lg:text-gray-100 transition-colors duration-200 hover:text-teal-400"
+          }
         >
           Home
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link
+        <NavLink
           to="/services"
           title="All Services"
-          className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
+          className={({ isActive }) =>
+            isActive
+              ? "text-cyan-400 text-lg"
+              : "text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
+          }
         >
           Services
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link
+        <NavLink
           to="/blog"
           aria-label="Blog"
           title="Blog"
-          className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
+          className={({ isActive }) =>
+            isActive
+              ? "text-cyan-400 text-lg"
+              : "text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400"
+          }
         >
           Blog
-        </Link>
+        </NavLink>
       </li>
     </>
   );
 
   const rightSideMenuItems = (
-    <>
-      <li>
-        <Link to="/login">
-          <button
-            type="button"
-            className="px-6 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100"
-          >
-            Login
-          </button>
-        </Link>
-      </li>
-    </>
+    <div>
+      {user?.uid || user?.email ? (
+        <div className="lg:flex lg:items-center lg:justify-beteween lg:space-y-0 space-y-4">
+          <li>
+            <Link
+              to="/myreview"
+              aria-label="My Review"
+              title="My Review"
+              className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400 mr-5"
+            >
+              My Review
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/addservice"
+              aria-label="Add Service"
+              title="Add Service"
+              className="text-lg tracking-wide lg:text-gray-100  transition-colors duration-200 hover:text-teal-400 mr-5"
+            >
+              Add Service
+            </Link>
+          </li>
+
+          <li>
+            <button
+              onClick={logOut}
+              type="button"
+              className="px-4 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100"
+            >
+              Logout
+            </button>
+          </li>
+        </div>
+      ) : (
+        <li>
+          <Link to="/login">
+            <button
+              type="button"
+              className="px-6 py-2 text-lg font-normal border rounded text-white hover:bg-teal-500 hover:border-teal-500 hover:text-black dark:border-gray-100  dark:text-gray-100"
+            >
+              Login
+            </button>
+          </Link>
+        </li>
+      )}
+    </div>
   );
 
   return (
@@ -66,7 +118,7 @@ const Header = () => {
           </ul>
           <Link to="/" className="inline-flex items-center lg:mx-auto">
             <img className="rounded-full h-16 w-16" src={logo} alt="" />
-            <h1 className="ml-2 text-2xl tracking-wide text-cyan-400">
+            <h1 className="ml-2 text-3xl tracking-wide text-cyan-400">
               Photography ReviewZone
             </h1>
           </Link>
@@ -131,7 +183,7 @@ const Header = () => {
                     </div>
                   </div>
                   <nav>
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 text-center">
                       {leftSideMenuItems}
                       {rightSideMenuItems}
                     </ul>
