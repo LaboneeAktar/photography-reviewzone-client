@@ -25,7 +25,7 @@ const Home = () => {
         <div className="dark:bg-violet-400 bg-emerald-300">
           <div className="container flex flex-col items-center px-4 py-10 pb-24 mx-auto text-center lg:pb-56 md:py-16 md:px-10 lg:px-32 dark:text-gray-900">
             <h1 className="text-xl font-bold leading-none lg:text-3xl dark:text-gray-900">
-              Get All Services & Give Your Review Here!!
+              Get All Photography Services & Give Your Review!!
             </h1>
             <p className="mt-6 mb-5 text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-900">
               Enjoy your favourite type of pictures and give more reviews to
@@ -34,15 +34,17 @@ const Home = () => {
               experience...
             </p>
             <div className="flex justify-between">
-              <button
-                type="button"
-                className="flex justify-between items-center px-4 py-3 m-2 text-lg border border-gray-800 rounded bg-gray-800 text-white dark:border-gray-700 dark:text-gray-900 hover:bg-teal-700 hover:border-teal-500 "
-              >
-                <p>Let's Start</p>
-                <p className="pl-3">
-                  <FaArrowRight />
-                </p>
-              </button>
+              <Link to="/services">
+                <button
+                  type="button"
+                  className="flex justify-between items-center px-4 py-3 m-2 text-lg border border-gray-800 rounded bg-gray-800 text-white dark:border-gray-700 dark:text-gray-900 hover:bg-teal-700 hover:border-teal-500 "
+                >
+                  <p>Let's Start</p>
+                  <p className="pl-3">
+                    <FaArrowRight />
+                  </p>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

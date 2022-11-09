@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -13,7 +14,11 @@ const Header = () => {
     <>
       {user?.uid && (
         <div className="w-10 rounded-full ml-3" title={user?.displayName}>
-          <img className="rounded-full h-10" alt="..." src={user?.photoURL} />
+          {user?.photoURL ? (
+            <img className="rounded-full h-10" alt="..." src={user?.photoURL} />
+          ) : (
+            <FaUser />
+          )}
         </div>
       )}
       <li>

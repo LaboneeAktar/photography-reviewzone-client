@@ -13,10 +13,10 @@ const ReviewForm = ({ service }) => {
     <div>
       <form onSubmit={handleSubmitReview}>
         <h2 className="text-2xl text-center py-5">
-          You are going to Review of <strong> "{title}" </strong>
+          Add Your Review of <strong> "{title}" </strong>
         </h2>
 
-        <div className="bg-teal-300 p-10 mx-16 rounded-md mb-16">
+        <div className="bg-teal-300 p-10 lg:mx-16 mx-5 rounded-md mb-16">
           <fieldset className="lg:ml-[360px] my-5 space-y-1 dark:text-gray-100">
             <div className="flex">
               <span className="flex items-center px-3 pointer-events-none text-lg rounded-l-md bg-gray-300">
@@ -28,14 +28,14 @@ const ReviewForm = ({ service }) => {
                 placeholder=""
                 defaultValue={_id}
                 readOnly
-                className="w-96 px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
+                className="lg:w-96 w-full px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
                 required
               />
             </div>
           </fieldset>
 
-          <div className="flex mx-auto">
-            <fieldset className="lg:ml-24 space-y-1 dark:text-gray-100">
+          <div className="lg:flex lg:mx-auto">
+            <fieldset className="lg:ml-24 space-y-1 dark:text-gray-100 mb-5 lg:mb-0">
               <div className="flex mx-auto">
                 <span className="flex items-center px-3 pointer-events-none text-lg rounded-l-md bg-gray-300">
                   Name
@@ -46,7 +46,7 @@ const ReviewForm = ({ service }) => {
                   id="name"
                   placeholder="Enter Name"
                   defaultValue={user?.displayName}
-                  className="w-96 px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px] mr-10"
+                  className="lg:w-96 w-full px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px] lg:mr-10"
                   required
                 />
               </div>
@@ -62,7 +62,7 @@ const ReviewForm = ({ service }) => {
                   placeholder="Email Address"
                   defaultValue={user?.email}
                   readOnly
-                  className="w-96 px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
+                  className="lg:w-96 w-full px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
                   required
                 />
               </div>
@@ -72,7 +72,7 @@ const ReviewForm = ({ service }) => {
             <textarea
               id="review"
               placeholder="Write a Review"
-              className="w-[500px] p-5 h-40 rounded-md dark:border-gray-700 dark:text-gray-900 mt-5 lg:mx-[350px]"
+              className="lg:w-[500px] w-full p-5 h-40 rounded-md dark:border-gray-700 dark:text-gray-900 mt-5 lg:mx-[350px]"
               required
             ></textarea>
           </div>
@@ -85,7 +85,7 @@ const ReviewForm = ({ service }) => {
                 name="ratings"
                 type="number"
                 placeholder="Enter Ratings"
-                className="w-96 px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
+                className="lg:w-96 w-full px-4 py-4 rounded-r-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
               />
             </div>
           </fieldset>
