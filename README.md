@@ -1,4 +1,4 @@
-# learn-coding-client
+# photography-reviewzone-client
 
 ## Photography ReviewZone
 
