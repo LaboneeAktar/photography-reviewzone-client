@@ -53,6 +53,21 @@ const MyReview = () => {
 
   return (
     <div className="mb-16">
+      <div className="lg:relative lg:block hidden">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/002/169/714/original/online-feedback-reputation-best-quality-customer-review-concept-flat-style-businessman-hand-finger-pointing-five-gold-star-rating-on-gradient-background-illustration-vector.jpg"
+          className="absolute inset-0 object-cover w-full h-full"
+          alt=""
+        />
+        <div className="relative bg-gray-900 bg-opacity-75">
+          <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <h2 className="text-center text-4xl text-slate-300 p-10">
+              Reviews & Ratings
+            </h2>
+          </div>
+        </div>
+      </div>
+
       <h1 className="text-2xl text-center p-10">
         You have {myreviews.length} Reviews
       </h1>

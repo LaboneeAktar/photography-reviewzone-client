@@ -7,7 +7,7 @@ const Blog = () => {
     <div>
       <div className="lg:relative mb-16 lg:block hidden">
         <img
-          src="https://www.blogger.com/about/img/social/facebook-1200x630.jpg"
+          src="https://legacytips.com/wp-content/uploads/2019/05/transition-from-blog-to-website-7.jpg"
           className="absolute inset-0 object-cover w-full h-full"
           alt=""
         />

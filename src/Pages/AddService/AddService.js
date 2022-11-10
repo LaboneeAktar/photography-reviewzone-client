@@ -1,7 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
+  useTitle("Add Service");
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -39,8 +41,22 @@ const AddService = () => {
 
   return (
     <div>
+      <div className="lg:relative lg:block hidden">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0070/7032/files/diy-product-photography.jpg?v=1599161908"
+          className="absolute inset-0 object-cover w-full h-full"
+          alt=""
+        />
+        <div className="relative bg-gray-900 bg-opacity-75">
+          <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <h2 className="text-center text-4xl text-slate-300 p-10">
+              Add Photography Service
+            </h2>
+          </div>
+        </div>
+      </div>
+
       <div className="lg:mb-16 mb-5 lg:mt-5">
-        <h2 className="text-center text-2xl">Add Photography Service</h2>
         <div className="py-10 px-5 lg:pb-1">
           <div className="w-full max-w-3xl p-8 rounded-xl bg-teal-300 text-black mx-auto">
             <form
