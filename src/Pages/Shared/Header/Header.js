@@ -17,7 +17,7 @@ const Header = () => {
           {user?.photoURL ? (
             <img className="rounded-full h-10" alt="..." src={user?.photoURL} />
           ) : (
-            <FaUser />
+            <FaUser className="text-white" />
           )}
         </div>
       )}
