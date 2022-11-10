@@ -12,6 +12,7 @@ const ReviewForm = ({ service }) => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = user?.photoURL || "No Photo";
     const ratings = form.ratings.value;
     const message = form.review.value;
 
@@ -22,6 +23,7 @@ const ReviewForm = ({ service }) => {
       serviceName: title,
       reviewerName: name,
       email,
+      image: photo,
       ratings,
       message,
     };
@@ -45,7 +47,7 @@ const ReviewForm = ({ service }) => {
   };
 
   return (
-    <div className="lg:mb-16 mb-5">
+    <div className="lg:mb-16 mb-5 lg:mt-5">
       <h2 className="text-center text-2xl">
         Add Your Review of <strong>"{title}"</strong>
       </h2>

@@ -12,7 +12,7 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { title, img, description, price, ratings } = service;
-  //   console.log(service);
+  console.log(service);
   return (
     <div>
       <div className="lg:relative mb-10 lg:block hidden">
@@ -29,9 +29,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-3xl text-center pt-7 lg:pt-0 pb-5">
-        Details of {title}
-      </h1>
+      <h1 className="text-3xl text-center pt-7 pb-7">Details of {title}</h1>
       <PhotoProvider>
         <div className="flex flex-col max-w-3xl lg:mx-auto mx-5 mb-1 p-6 space-y-6 overflow-hidden rounded-lg shadow-lg dark:bg-gray-900 dark:text-gray-100 bg-emerald-200 h-full">
           <div>
@@ -64,15 +62,12 @@ const ServiceDetails = () => {
         </div>
       </PhotoProvider>
       <section>
-        <h1 className="text-3xl text-center mt-16 pb-5">Reviews</h1>
+        <h1 className="text-3xl text-center mt-16 lg:pb-10 pb-5">Reviews</h1>
 
         {user?.uid || user?.email ? (
           <div>
             <div>
-              <h2 className="text-xl text-center text-rose-700 p-10">
-                No Reviews
-              </h2>
-              <Review></Review>
+              <Review service={service}></Review>
             </div>
             <div>
               <ReviewForm service={service}></ReviewForm>
