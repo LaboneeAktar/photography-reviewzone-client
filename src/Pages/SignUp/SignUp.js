@@ -10,7 +10,7 @@ import useTitle from "../../hooks/useTitle";
 const SignUp = () => {
   useTitle("SignUp");
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile, providerLogin } =
+  const { createUser, updateUserProfile, providerLogin, loading } =
     useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
@@ -19,6 +19,14 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-cyan-400"></div>
+      </div>
+    );
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();

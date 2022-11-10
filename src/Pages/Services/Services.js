@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 import useTitle from "../../hooks/useTitle";
 import Service from "../Service/Service";
 
 const Services = () => {
   useTitle("Services");
   const services = useLoaderData();
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-cyan-400"></div>
+      </div>
+    );
+  }
 
   return (
     <div>

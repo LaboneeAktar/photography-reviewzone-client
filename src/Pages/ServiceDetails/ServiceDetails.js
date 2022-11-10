@@ -12,7 +12,7 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const { title, img, description, price, ratings } = service;
-  console.log(service);
+  // console.log(service);
   return (
     <div>
       <div className="lg:relative mb-10 lg:block hidden">

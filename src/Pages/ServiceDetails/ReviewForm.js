@@ -17,7 +17,6 @@ const ReviewForm = ({ service }) => {
     const message = form.review.value;
 
     const time = new Date();
-    console.log(time);
 
     // console.log(name, email, ratings, message);
 

@@ -1,8 +1,25 @@
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Blog = () => {
+  useTitle("Blog");
   return (
     <div>
+      <div className="lg:relative mb-16 lg:block hidden">
+        <img
+          src="https://www.blogger.com/about/img/social/facebook-1200x630.jpg"
+          className="absolute inset-0 object-cover w-full h-full"
+          alt=""
+        />
+        <div className="relative bg-gray-900 bg-opacity-75">
+          <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <h2 className="text-center text-4xl text-slate-300 p-10">
+              Some Blogs About Study
+            </h2>
+          </div>
+        </div>
+      </div>
+
       <div className="dark:bg-gray-800  dark:text-gray-100">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-slate-200 dark:bg-gray-900 my-10">
           <div className="flex items-center justify-between">
@@ -17,15 +34,44 @@ const Blog = () => {
             <h2 className="text-2xl font-bold">
               Write Down the Differences Between SQL and NoSQL.{" "}
             </h2>
-            <p className="mt-2">
-              Cross-origin resource sharing (CORS) is a browser mechanism which
-              enables controlled access to resources located outside of a given
-              domain. It extends and adds flexibility to the same-origin policy
-              (SOP). However, it also provides potential for cross-domain
-              attacks, if a website's CORS policy is poorly configured and
-              implemented. CORS is not a protection against cross-origin attacks
-              such as cross-site request forgery (CSRF).
-            </p>
+            <div className="mt-2 lg:flex lg:justify-between">
+              <div>
+                <h2>SQL:</h2>
+                <p className="pl-10 pt-4">
+                  1. Relational Database Management System (RDBMS).
+                </p>
+                <p className="pl-10">
+                  2. These databases have fixed or static or predefined schema.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  3. These databases are not suited for hierarchical data
+                  storage.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  4. These databases are best suited for complex queries.
+                </p>
+                <p className="pl-10"> 5. Vertically Scalable.</p>
+              </div>
+              <div>
+                <h2>NSQL:</h2>
+                <p className="pl-10 pt-4">
+                  1. Non-relational or distributed database system.
+                </p>
+                <p className="pl-10">2. They have dynamic schema.</p>
+                <p className="pl-10">
+                  {" "}
+                  3. These databases are best suited for hierarchical data
+                  storage.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  4. These databases are not so good for complex queries.
+                </p>
+                <p className="pl-10"> 5. Horizontally scalable.</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-slate-200 dark:bg-gray-900 my-10">
@@ -84,14 +130,55 @@ const Blog = () => {
             <h2 className="text-2xl font-bold">
               What is the Differences Between JavaScript & NodeJS?
             </h2>
-            <p className="mt-2">
-              The private route component is similar to the public route, the
-              only change is that redirect URL and authenticate condition. If
-              the user is not authenticated he will be redirected to the login
-              page and the user can only access the authenticated routes If he
-              is authenticated (Logged in).
-            </p>
-            <p className="pt-5">Example:</p>
+            <div className="mt-2 lg:flex lg:justify-between">
+              <div>
+                <h2>JavaScript:</h2>
+                <p className="pl-10 pt-4">
+                  1. Javascript is a programming language that is used for
+                  writing scripts on the website.
+                </p>
+                <p className="pl-10">
+                  2. Javascript can only be run in the browsers.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  3. It is basically used on the client-side.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  4. Javascript is capable enough to add HTML and play with the
+                  DOM.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  5. Javascript can run in any browser engine as like JS core in
+                  safari and Spidermonkey in Firefox.
+                </p>
+              </div>
+              <div>
+                <h2>NodeJS:</h2>
+                <p className="pl-10 pt-4">
+                  1. NodeJS is a Javascript runtime environment.
+                </p>
+                <p className="pl-10">
+                  2. We can run Javascript outside the browser with the help of
+                  NodeJS.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  3. It is mostly used on the server-side.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  4. Nodejs does not have capability to add HTML tags.
+                </p>
+                <p className="pl-10">
+                  {" "}
+                  5. V8 is the Javascript engine inside of node.js that parses
+                  and runs Javascript.{" "}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm bg-slate-200 dark:bg-gray-900 my-10">

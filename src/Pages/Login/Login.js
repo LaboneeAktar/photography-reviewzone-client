@@ -64,7 +64,7 @@ const Login = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const currentUser = {
           email: user.email,
         };
