@@ -16,6 +16,9 @@ const ReviewForm = ({ service }) => {
     const ratings = form.ratings.value;
     const message = form.review.value;
 
+    const time = new Date();
+    console.log(time);
+
     // console.log(name, email, ratings, message);
 
     const review = {
@@ -26,6 +29,7 @@ const ReviewForm = ({ service }) => {
       image: photo,
       ratings,
       message,
+      time,
     };
 
     fetch("https://photography-reviewzone-server.vercel.app/reviews", {
