@@ -6,25 +6,38 @@ import MyReviewRow from "./MyReviewRow";
 
 const MyReview = () => {
   useTitle("My Review");
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [myreviews, setMyreviews] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     fetch(
-      `https://photography-reviewzone-server.vercel.app/reviews/myreviews?email=${user?.email}`
+      `https://photography-reviewzone-server.vercel.app/reviews/myreviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("reviewZone-token")}`,
+        },
+      }
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          logOut();
+        }
+        return res.json();
+      })
       .then((data) => setMyreviews(data));
-  }, [user?.email, refresh]);
+  }, [user?.email, refresh, logOut]);
 
   const handleDelete = (id) => {
-    const proceed = window.confirm("Are You Sure to Delete this?");
+    const proceed = window.confirm("Are You Sure to Delete This?");
     if (proceed) {
       fetch(
         `https://photography-reviewzone-server.vercel.app/reviews/myreviews/${id}`,
         {
           method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("reviewZone-token")}`,
+          },
         }
       )
         .then((res) => res.json())

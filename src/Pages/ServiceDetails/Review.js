@@ -56,9 +56,9 @@ const Review = ({ service }) => {
                   <div className="p-4 space-y-2 text-[16px] dark:text-gray-400">
                     <p>{review.message}</p>
                     <p className="text-sm dark:text-gray-400 mt-10 pt-5 text-end">
-                      <span>{review.time.split("T")[1].split(".")[0]} </span>{" "}
+                      <span>{review?.time?.split("T")[1].split(".")[0]} </span>
                       <br />
-                      <span>{review.time.split("T")[0]}</span>
+                      <span>{review?.time?.split("T")[0]}</span>
                     </p>
                   </div>
                 </div>

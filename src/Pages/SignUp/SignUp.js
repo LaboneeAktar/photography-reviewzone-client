@@ -59,13 +59,30 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
+        const currentUser = {
+          email: user.email,
+        };
+
         updateUserProfile(name, photoURL)
           .then(() => {})
           .catch((error) => console.error(error));
         form.reset();
         toast.success("Successfully Created Account");
-        navigate(from, { replace: true });
+
+        fetch("https://photography-reviewzone-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            localStorage.setItem("reviewZone-token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -78,9 +95,24 @@ const SignUp = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const currentUser = {
+          email: user.email,
+        };
         toast.success("Welcome!! Login Successfull.");
-        navigate(from, { replace: true });
+
+        fetch("https://photography-reviewzone-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            localStorage.setItem("reviewZone-token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => console.error(error));
   };
@@ -90,9 +122,24 @@ const SignUp = () => {
     providerLogin(githubProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const currentUser = {
+          email: user.email,
+        };
         toast.success("Welcome!! Login Successfull.");
-        navigate(from, { replace: true });
+
+        fetch("https://photography-reviewzone-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            localStorage.setItem("reviewZone-token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => console.error(error));
   };
