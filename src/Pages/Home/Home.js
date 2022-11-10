@@ -20,7 +20,6 @@ const Home = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  console.log(services);
   return (
     <div>
       <section>

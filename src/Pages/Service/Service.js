@@ -15,7 +15,7 @@ const Service = ({ service }) => {
               <img
                 src={img}
                 alt=""
-                className="w-full mb-4 rounded-lg dark:bg-gray-500"
+                className="w-full lg:h-64 mb-4 rounded-lg dark:bg-gray-500"
               />
             </PhotoView>
             <h2 className="mb-3 text-xl lg:text-2xl font-semibold">{title}</h2>

@@ -10,6 +10,7 @@ import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
 import Services from "../../Pages/Services/Services";
 import SignUp from "../../Pages/SignUp/SignUp";
 import UpdateReview from "../../Pages/MyReview/UpdateReview";
+import AddService from "../../Pages/AddService/AddService";
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +57,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateReview></UpdateReview>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addservice",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
           </PrivateRoute>
         ),
       },

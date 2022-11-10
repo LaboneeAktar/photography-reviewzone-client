@@ -9,7 +9,7 @@ const MyReviewRow = ({ myreview, handleDelete }) => {
       <div>
         <div className="container p-2 mx-auto sm:p-4 text-gray-200 max-w-6xl">
           <div className="overflow-x-auto">
-            <table className="min-w-full">
+            <table className="min-w-full w-96">
               <colgroup>
                 <col />
                 <col />
@@ -37,7 +37,7 @@ const MyReviewRow = ({ myreview, handleDelete }) => {
                   <td className="p-3 text-[16px] text-center">
                     <p>{ratings}</p>
                   </td>
-                  <td className="ml-5 mr-0 text-[16px] text-center">
+                  <td className="lg:ml-5 lg:mr-0 text-[16px] text-center">
                     <Link to={`/reviews/myreviews/edit/${_id}`}>
                       <button
                         type="button"
@@ -49,7 +49,7 @@ const MyReviewRow = ({ myreview, handleDelete }) => {
                     <button
                       onClick={() => handleDelete(_id)}
                       type="button"
-                      className="ml-10 px-3 py-3 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-teal-300 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
+                      className="lg:ml-10 px-3 py-3 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-teal-300 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
                     >
                       Delete
                     </button>

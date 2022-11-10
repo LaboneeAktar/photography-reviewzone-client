@@ -1,50 +1,37 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React from "react";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../contexts/AuthProvider";
 
-const UpdateReview = () => {
-  const router = useParams();
-  const { user } = useContext(AuthContext);
-  const [review, setReview] = useState({});
-
-  const { id } = router;
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
-
-  useEffect(() => {
-    fetch(`https://photography-reviewzone-server.vercel.app/reviews/${id}`)
-      .then((res) => res.json())
-      .then((data) => setReview(data));
-  }, [id]);
-
+const AddService = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
+    const photo = form.photoURL.value;
+    const price = form.price.value;
     const ratings = form.ratings.value;
-    const message = form.review.value;
+    const description = form.description.value;
 
-    const review = {
+    const service = {
+      title: name,
+      img: photo,
       ratings,
-      message,
+      price,
+      description,
     };
 
-    fetch(`https://photography-reviewzone-server.vercel.app/reviews/${id}`, {
-      method: "PATCH",
+    fetch("https://photography-reviewzone-server.vercel.app/allservices", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(service),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount > 0) {
+        if (data.acknowledged) {
+          toast.success("Service Add Successfully");
           form.reset();
-          toast.success("Update Successfull");
-          navigate(from, { replace: true });
         }
       })
       .catch((error) => console.error(error));
@@ -52,8 +39,8 @@ const UpdateReview = () => {
 
   return (
     <div>
-      <div className="lg:mb-16 mb-5 lg:mt-10">
-        <h2 className="text-center text-2xl">Update Your Review</h2>
+      <div className="lg:mb-16 mb-5 lg:mt-5">
+        <h2 className="text-center text-2xl">Add Photography Service</h2>
         <div className="py-10 px-5 lg:pb-1">
           <div className="w-full max-w-3xl p-8 rounded-xl bg-teal-300 text-black mx-auto">
             <form
@@ -66,15 +53,13 @@ const UpdateReview = () => {
                     htmlFor="name"
                     className="block text-black text-center text-lg"
                   >
-                    Name
+                    Service Name
                   </label>
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    defaultValue={user?.displayName}
-                    readOnly
-                    placeholder="Enter Your Name"
+                    placeholder="Enter Service Name"
                     className="lg:w-80 w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black font-normal text-[16px] focus:border-violet-400"
                     required
                   />
@@ -82,24 +67,35 @@ const UpdateReview = () => {
 
                 <div className="space-y-1 text-sm">
                   <label
-                    htmlFor="email"
-                    className="block text-black text-center text-lg"
+                    htmlFor="photURL"
+                    className="block text-black text-lg text-center"
                   >
-                    Email
+                    Photo URL
                   </label>
                   <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    defaultValue={review?.email}
-                    readOnly
-                    placeholder="Enter Your Email"
-                    className="lg:w-80 w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black  focus:border-violet-400 font-normal text-[16px]"
+                    type="text"
+                    name="photoURL"
+                    id="photURL"
+                    placeholder="Enter PhotoURL"
+                    className="lg:w-80 w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black font-normal text-[16px] focus:border-violet-400"
                     required
                   />
                 </div>
               </div>
 
+              <div className="space-y-1 text-sm text-center">
+                <label htmlFor="price" className="block text-black text-lg">
+                  Price
+                </label>
+                <input
+                  type="price"
+                  name="price"
+                  id="price"
+                  placeholder="Enter Price"
+                  className="lg:w-80 w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black focus:border-violet-400 font-normal text-[16px] text-center"
+                  required
+                />
+              </div>
               <div className="space-y-1 text-sm text-center">
                 <label htmlFor="ratings" className="block text-black text-lg">
                   Ratings
@@ -108,7 +104,6 @@ const UpdateReview = () => {
                   type="ratings"
                   name="ratings"
                   id="ratings"
-                  defaultValue={review.ratings}
                   placeholder="Enter Ratings"
                   className="lg:w-80 w-full px-4 py-4 rounded-md border-white bg-slate-100 text-black focus:border-violet-400 font-normal text-[16px] text-center"
                   required
@@ -116,22 +111,21 @@ const UpdateReview = () => {
               </div>
               <div className="space-y-1 text-sm">
                 <label
-                  htmlFor="review"
+                  htmlFor="description"
                   className="block text-black text-lg"
                 ></label>
                 <textarea
                   type="text"
-                  name="review"
-                  id="review"
-                  placeholder="Write a Review"
-                  defaultValue={review.message}
+                  name="description"
+                  id="description"
+                  placeholder="Write a Description"
                   className="w-full h-40 rounded-md p-5 border-white bg-slate-100 text-black focus:border-violet-400 font-normal text-[16px]"
                   required
                 />
               </div>
 
               <button className="lg:ml-[300px] block px-6 py-2 text-lg font-normal border border-black rounded text-black hover:bg-teal-500 hover:border-teal-500 dark:border-gray-100  dark:text-gray-100">
-                Update
+                Add Service
               </button>
             </form>
           </div>
@@ -141,4 +135,4 @@ const UpdateReview = () => {
   );
 };
 
-export default UpdateReview;
+export default AddService;
