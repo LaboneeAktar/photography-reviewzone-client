@@ -1,7 +1,8 @@
 import React from "react";
 
-const MyReviewRow = ({ myreview }) => {
-  const { serviceName, message } = myreview;
+const MyReviewRow = ({ myreview, handleDelete }) => {
+  const { _id, serviceName, message } = myreview;
+
   return (
     <div>
       <div>
@@ -44,6 +45,7 @@ const MyReviewRow = ({ myreview }) => {
                       Update
                     </button>
                     <button
+                      onClick={() => handleDelete(_id)}
                       type="button"
                       className="ml-10 px-3 py-3 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-teal-300 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
                     >
