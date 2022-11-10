@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MyReviewRow = ({ myreview, handleDelete }) => {
-  const { _id, serviceName, message } = myreview;
+  const { _id, serviceName, ratings, message } = myreview;
 
   return (
     <div>
@@ -19,7 +20,7 @@ const MyReviewRow = ({ myreview, handleDelete }) => {
                 <tr className="text-center">
                   <th className="p-3 font-normal text-xl">Service Name</th>
                   <th className="p-3 font-normal text-xl">Review</th>
-                  <th className="p-3 font-normal text-xl">Date</th>
+                  <th className="p-3 font-normal text-xl">Ratings</th>
                   <th className="p-3 font-normal text-xl text-center">
                     Action
                   </th>
@@ -34,16 +35,17 @@ const MyReviewRow = ({ myreview, handleDelete }) => {
                     <p>{message}</p>
                   </td>
                   <td className="p-3 text-[16px] text-center">
-                    <p>14 Jan 2022</p>
-                    <p>Friday</p>
+                    <p>{ratings}</p>
                   </td>
                   <td className="ml-5 mr-0 text-[16px] text-center">
-                    <button
-                      type="button"
-                      className="px-3 py-3 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-teal-300 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
-                    >
-                      Update
-                    </button>
+                    <Link to={`/reviews/myreviews/edit/${_id}`}>
+                      <button
+                        type="button"
+                        className="px-3 py-3 text-[16px] font-normal border hover:border-rose-900 rounded hover:text-rose-900 hover:bg-teal-300 bg-teal-500 border-teal-500 text-black dark:border-gray-100  dark:text-gray-100"
+                      >
+                        Update
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(_id)}
                       type="button"
