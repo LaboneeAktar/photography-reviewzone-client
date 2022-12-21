@@ -48,7 +48,6 @@ const AuthProvider = ({ children }) => {
   //logout
   const logOut = () => {
     setLoading(true);
-    localStorage.removeItem("reviewZone-token");
     return signOut(auth);
   };
 
